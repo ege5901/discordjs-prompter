@@ -51,20 +51,20 @@ exports.reaction = (channel, options = {
                 if (reaction.emoji.name === confirm) {
                     // If confirmed, delete message and resolve
                     if (channel instanceof discord_js_1.DMChannel) {
-                        resolve('yes');
+                        resolve(reaction);
                     }
                     else {
-                        message.delete().then(() => resolve('yes'));
+                        message.delete().then(() => resolve(reaction));
                         return;
                     }
                 }
                 else {
                     // If cancelled, delete message and resolve
                     if (channel instanceof discord_js_1.DMChannel) {
-                        resolve('no');
+                        resolve(reaction);
                         return;
                     }
-                    message.delete().then(() => resolve('no'));
+                    message.delete().then(() => resolve(reaction));
                 }
             })
                 .catch(() => {
